@@ -41,3 +41,90 @@ Fix typo test
    .idea/
    .vscode/
    ```
+
+## Git 别名配置
+
+为了方便查看提交历史，可以添加以下 Git 别名到 \~/.gitconfig\ 文件：
+
+\\ini
+[alias]
+    graph = log --all --graph --decorate --oneline
+\
+运行 \git graph\ 即可查看图形化提交历史。
+
+## 全局 Git 忽略文件配置
+
+为了避免将操作系统或编辑器生成的临时文件提交到仓库，可以设置全局 Git 忽略文件：
+
+1. 运行以下命令设置全局忽略文件路径：
+
+   \\bash
+   git config --global core.excludesfile ~/.gitignore_global
+   \
+2. 创建 \~/.gitignore_global\ 文件并添加以下内容：
+
+   \\gitignore
+   # 忽略 macOS 的 .DS_Store 文件
+   .DS_Store
+   *.swp
+   *.swo
+   *.swn
+   *.bak
+   *.tmp
+   *.log
+   *.cache
+   .idea/
+   .vscode/
+   \EOL
+
+# 提交更改
+echo "正在提交更改..."
+git add README.md
+git commit -m "添加 Git 别名和全局 Git 忽略文件配置"
+
+# 推送分支到 GitHub
+echo "正在推送分支到 GitHub..."
+if ! git push origin "git-improvements"; then
+  echo "错误: Git 推送失败。请检查网络连接或远程仓库配置。"
+  exit 1
+fi
+
+echo "Pull Request 已成功创建！"
+echo "脚本执行完成！"
+
+## Git 别名配置
+
+为了方便查看提交历史，可以添加以下 Git 别名到 `~/.gitconfig` 文件：
+
+```ini
+[alias]
+    graph = log --all --graph --decorate --oneline
+```
+
+运行 `git graph` 即可查看图形化提交历史。
+
+## 全局 Git 忽略文件配置
+
+为了避免将操作系统或编辑器生成的临时文件提交到仓库，可以设置全局 Git 忽略文件：
+
+1. 运行以下命令设置全局忽略文件路径：
+
+   ```bash
+   git config --global core.excludesfile ~/.gitignore_global
+   ```
+
+2. 创建 `~/.gitignore_global` 文件并添加以下内容：
+
+   ```gitignore
+   # 忽略 macOS 的 .DS_Store 文件
+   .DS_Store
+   *.swp
+   *.swo
+   *.swn
+   *.bak
+   *.tmp
+   *.log
+   *.cache
+   .idea/
+   .vscode/
+   ```
